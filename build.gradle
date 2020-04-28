@@ -1,0 +1,64 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+
+        plugin = [
+                gradle: '3.6.3',
+                kotlin: '1.3.72'
+        ]
+
+        app = [
+                code: 1,
+                name: '1.0.0'
+        ]
+
+        sdk = [
+                min       : 21,
+                max       : 29,
+                compile   : 29,
+                build_tool: "28.0.3"
+        ]
+
+        libs = [
+                material   : '1.2.0-alpha06',
+                appcompat  : '1.1.0',
+                core       : '1.2.0',
+                constraint : '2.0.0-beta4',
+                swipe      : '1.0.0',
+                vector     : '1.1.0',
+                coroutines : '1.1.1',
+                lifecycle  : '2.2.0',
+                junit      : '4.13-beta-2',
+                espresso   : '3.2.0-beta01',
+                uiautomator: '2.2.0',
+                gson       : '2.8.5',
+                refresh    : '1.0.0'
+        ]
+    }
+
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:${plugin.gradle}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$plugin.kotlin"
+
+        //Added for bintray upload
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

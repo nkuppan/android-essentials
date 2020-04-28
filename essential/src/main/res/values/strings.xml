@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back_button">Back button</string>
+    <string name="clear_text">Clear search text</string>
+    <string name="voice_search">Google voice search prompt</string>
+    <string name="speech_prompt">Voice search</string>
+    <string name="send_email_title">Send mail…</string>
+    <string name="open_web_page">Open web page</string>
+    <string name="share_content">Share text content</string>
+    <string name="error_title">ERROR</string>
+    <string name="play_store_not_available">Could not launch the play store app</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="failed_to_load_data">Failed to load data</string>
+    <string name="retry">Retry</string>
+    <string name="internet_failure_message">Please make sure your internet connection</string>
+    <string name="service_failure_message">Sorry for the inconvenience some error occurred</string>
+    <string name="no_data_available">No data available</string>
+</resources>

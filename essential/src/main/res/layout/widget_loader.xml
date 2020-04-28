@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/app_margin_16dp">
+
+    <ProgressBar
+        android:id="@+id/loading_view"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/failure_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/internet_failure_message"
+        android:textSize="@dimen/text_size_20sp" />
+
+    <ImageView
+        android:id="@+id/failure_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_above="@id/failure_text"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/failed_to_load_data"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/retry_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/failure_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/app_margin_16dp"
+        android:gravity="center"
+        android:text="@string/retry"
+        android:textSize="@dimen/text_size_20sp" />
+
+</RelativeLayout>

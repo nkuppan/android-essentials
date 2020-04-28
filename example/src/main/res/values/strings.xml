@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Example</string>
+    <string name="activity_examples">Activity Examples</string>
+    <string name="toolbar_activity">Toolbar Activity</string>
+    <string name="fragment_example">Fragment Example</string>
+    <string name="search_activity">Search Activity</string>
+    <string name="place_holder_activity">Place Holder Activity</string>
+    <string name="list_activity">List Activity</string>
+    <string name="list_fragment">List Fragment</string>
+    <string name="this_is_sample_activity">This is sample text to be displayed in the page</string>
+</resources>
