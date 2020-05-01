@@ -16,7 +16,6 @@ import com.ancient.essentials.R
 import com.ancient.essentials.databinding.SearchPageBinding
 import com.ancient.essentials.extentions.autoCleared
 import com.ancient.essentials.extentions.obtainBaseViewModel
-import com.ancient.essentials.utils.Logger
 import com.ancient.essentials.view.viewmodel.SearchViewModel
 import java.util.*
 
@@ -80,7 +79,7 @@ abstract class BaseSearchActivity : BaseToolbarActivity() {
         try {
             startActivityForResult(intent, REQ_CODE_SPEECH_INPUT)
         } catch (a: ActivityNotFoundException) {
-            Logger.printError(a)
+            //Do nothing
         }
     }
 
