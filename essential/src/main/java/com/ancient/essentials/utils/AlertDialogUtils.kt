@@ -11,7 +11,7 @@ object AlertDialogUtils {
 
     /**
      * Method is used to create the common dialog utils method
-     *
+     *`
      * @param aContext          to create the dialog with the corresponding window
      * @param isNegativeAllow   it will decide the user need negative button option
      * @param aMessage          dialog message content
