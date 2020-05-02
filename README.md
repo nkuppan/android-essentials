@@ -1,4 +1,7 @@
 # Android Esstentials 
+
+[ ![Download](https://api.bintray.com/packages/naveenkumarn27/Essentials/android-essentials/images/download.svg) ](https://bintray.com/naveenkumarn27/Essentials/android-essentials/_latestVersion)
+
 Android base components to quick start application and reducing the lots of boiler plat codes to achieve basic functionality base clases to the android components
 
 How to add to your project
@@ -7,7 +10,7 @@ How to add to your project
 ```gradle
 // app.gradle
 dependencies {
-    implementation 'com.ancient.essentials:android-essentials:1.0.0'
+    implementation 'com.ancient.essentials:android-essentials:1.0.0-alpha01'
 }
 ```
 
