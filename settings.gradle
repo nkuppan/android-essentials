@@ -1,2 +1,2 @@
 include ':example'
-include ':essential'
+include ':android-essentials'
