@@ -10,7 +10,7 @@ How to add to your project
 ```gradle
 // app.gradle
 dependencies {
-    implementation 'com.ancient.essentials:android-essentials:1.0.0-alpha01'
+    implementation 'com.ancient.essentials:android-essentials:1.0.0'
 }
 ```
 
