@@ -36,14 +36,14 @@ abstract class BaseListFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshLi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initializeView(view)
+        initializeView()
 
         createRequest(true)
     }
 
     abstract fun createRequest(isStart: Boolean = false)
 
-    private fun initializeView(aView: View) {
+    private fun initializeView() {
 
         val lGridLayoutManager =
             if (resources.getBoolean(R.bool.is_tablet) && showGridLayoutForTab) {

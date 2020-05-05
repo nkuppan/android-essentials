@@ -1,4 +1,4 @@
-package com.ancient.sportscorer.common.view.adapter
+package com.ancient.essentials.view.adapter
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
