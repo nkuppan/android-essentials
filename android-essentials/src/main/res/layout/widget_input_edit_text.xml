@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ * Copyright @ Ancient Inc. All Rights Reserved.
+ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/widget_input_edit_text_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:errorTextColor="@android:color/holo_red_dark"
+        app:hintEnabled="true"
+        app:hintTextColor="?attr/colorAccent">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/widget_input_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:textColorHint="@color/edittext_hint" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
