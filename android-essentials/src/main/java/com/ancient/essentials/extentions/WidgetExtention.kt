@@ -30,9 +30,9 @@ fun View.showSnackbar(snackbarText: String, timeLength: Int) {
  * Triggers a snackbar message when the value contained by snackbarTaskMessageLiveEvent is modified.
  */
 fun View.setupSnackbar(
-        lifecycleOwner: LifecycleOwner,
-        snackbarEvent: LiveData<Event<Int>>,
-        timeLength: Int
+    lifecycleOwner: LifecycleOwner,
+    snackbarEvent: LiveData<Event<Int>>,
+    timeLength: Int
 ) {
     snackbarEvent.observe(lifecycleOwner, Observer { event ->
         event.getContentIfNotHandled()?.let {
@@ -41,9 +41,8 @@ fun View.setupSnackbar(
     })
 }
 
-
 @BindingAdapter(value = ["app:editTextStringAttrChanged"])
-fun setListener(editText: InputEditTextView, listener: InverseBindingListener?) {
+fun setEditTextString(editText: InputEditTextView, listener: InverseBindingListener?) {
     if (listener != null) {
         editText.mEditTextView.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
@@ -62,10 +61,15 @@ fun setListener(editText: InputEditTextView, listener: InverseBindingListener?) 
 }
 
 @BindingAdapter("app:editTextString")
-fun setText(editText: InputEditTextView, text: String?) {
+fun setEditTextString(editText: InputEditTextView, text: String?) {
     text?.let {
         if (it != editText.mEditTextView.text.toString()) {
             editText.mEditTextView.setText(it, false)
         }
     }
+}
+
+@BindingAdapter("app:hintText")
+fun setHintTextString(editText: InputEditTextView, text: String?) {
+    editText.setErrorText(text)
 }
