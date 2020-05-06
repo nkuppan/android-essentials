@@ -31,7 +31,7 @@ import com.google.android.material.textfield.TextInputLayout
 class InputEditTextView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = -1
+    defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     lateinit var mEditTextView: MaterialAutoCompleteTextView
