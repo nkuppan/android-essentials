@@ -106,7 +106,7 @@ class InputEditTextView @JvmOverloads constructor(
     }
 
     fun setErrorText(aTitleValue: String?) {
-        mTextInputLayout.isErrorEnabled = mEditTextView.text.isNullOrBlank()
+        mTextInputLayout.isErrorEnabled = true
         mTextInputLayout.error = if (aTitleValue.isNullOrBlank()) null else aTitleValue
     }
 

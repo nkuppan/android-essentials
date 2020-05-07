@@ -77,7 +77,7 @@ fun setHintTextString(editText: InputEditTextView, text: String?) {
     editText.setErrorText(text)
 }
 
-@BindingAdapter("app:inputType")
-fun setHintTextString(editText: InputEditTextView, aInputType: Int?) {
+@BindingAdapter("app:inputEditTextType")
+fun setInputEditTextType(editText: InputEditTextView, aInputType: Int?) {
     editText.setInputType(aInputType ?: InputType.TYPE_CLASS_TEXT)
 }
