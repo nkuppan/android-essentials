@@ -120,7 +120,7 @@ class InputEditTextView @JvmOverloads constructor(
         mTextInputLayout.hintTextColor = colorStateList
     }
 
-    private fun setInputType(aInputType: Int) {
+    fun setInputType(aInputType: Int) {
         mEditTextView.inputType = aInputType
     }
 

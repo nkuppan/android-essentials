@@ -1,6 +1,7 @@
 package com.ancient.essentials.extentions
 
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import androidx.databinding.BindingAdapter
@@ -50,7 +51,9 @@ fun setEditTextString(editText: InputEditTextView, listener: InverseBindingListe
             }
 
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-                // Do nothing
+                if (charSequence.isNotBlank()) {
+                    editText.setErrorText(null)
+                }
             }
 
             override fun afterTextChanged(editable: Editable) {
@@ -72,4 +75,9 @@ fun setEditTextString(editText: InputEditTextView, text: String?) {
 @BindingAdapter("app:errorText")
 fun setHintTextString(editText: InputEditTextView, text: String?) {
     editText.setErrorText(text)
+}
+
+@BindingAdapter("app:inputType")
+fun setHintTextString(editText: InputEditTextView, aInputType: Int?) {
+    editText.setInputType(aInputType ?: InputType.TYPE_CLASS_TEXT)
 }
