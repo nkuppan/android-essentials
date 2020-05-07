@@ -69,7 +69,7 @@ fun setEditTextString(editText: InputEditTextView, text: String?) {
     }
 }
 
-@BindingAdapter("app:hintText")
+@BindingAdapter("app:errorText")
 fun setHintTextString(editText: InputEditTextView, text: String?) {
     editText.setErrorText(text)
 }
