@@ -69,7 +69,8 @@ class InputEditTextView @JvmOverloads constructor(
         val lTitleText = lTypedArray.getString(R.styleable.InputEditTextView_TitleText)
         val hintText = lTypedArray.getString(R.styleable.InputEditTextView_HintText)
         val lErrorText = lTypedArray.getString(R.styleable.InputEditTextView_ErrorText)
-        val lInputType =
+        val isPasswordToggle = lTypedArray.getBoolean(R.styleable.InputEditTextView_password, false)
+        var lInputType =
             lTypedArray.getInt(R.styleable.InputEditTextView_InputType, InputType.TYPE_CLASS_TEXT)
 
         val lTitleColor = lTypedArray.getColor(
@@ -93,6 +94,11 @@ class InputEditTextView @JvmOverloads constructor(
         setErrorTextColor(lErrorColor)
 
         lTypedArray.recycle()
+
+        if (isPasswordToggle) {
+            lInputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            mTextInputLayout.isPasswordVisibilityToggleEnabled = true
+        }
 
         setInputType(lInputType)
     }

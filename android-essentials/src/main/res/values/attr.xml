@@ -15,5 +15,6 @@
         <attr name="ErrorText" format="string" />
         <attr name="ErrorTextColor" format="color" />
         <attr name="InputType" format="integer" />
+        <attr name="password" format="boolean" />
     </declare-styleable>
 </resources>
