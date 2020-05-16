@@ -1,6 +1,8 @@
 # Android Esstentials 
 
 [ ![Download](https://api.bintray.com/packages/naveenkumarn27/Essentials/android-essentials/images/download.svg) ](https://bintray.com/naveenkumarn27/Essentials/android-essentials/_latestVersion)
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![Build Status](https://travis-ci.org/naveenkumarn27/android-essentials.svg?branch=master)](https://travis-ci.org/naveenkumarn27/android-essentials)
 
 Android base components to quick start application and reducing the lots of boiler plat codes to achieve basic functionality base clases to the android components
 
@@ -10,7 +12,7 @@ How to add to your project
 ```gradle
 // app.gradle
 dependencies {
-    implementation 'com.ancient.essentials:android-essentials:1.0.0'
+    implementation 'com.ancient.essentials:android-essentials:1.1.1'
 }
 ```
 
