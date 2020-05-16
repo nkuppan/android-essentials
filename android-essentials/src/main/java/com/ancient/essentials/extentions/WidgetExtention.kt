@@ -1,6 +1,7 @@
 package com.ancient.essentials.extentions
 
 import android.text.Editable
+import android.text.InputFilter
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
@@ -25,6 +26,21 @@ fun View.showSnackbar(snackbarText: String, timeLength: Int) {
     Snackbar.make(this, snackbarText, timeLength).run {
         show()
     }
+}
+
+/**
+ * Triggers a snackbar message when the value contained by snackbarTaskMessageLiveEvent is modified.
+ */
+fun View.setupStringSnackbar(
+    lifecycleOwner: LifecycleOwner,
+    snackbarEvent: LiveData<Event<String>>,
+    timeLength: Int
+) {
+    snackbarEvent.observe(lifecycleOwner, Observer { event ->
+        event.getContentIfNotHandled()?.let {
+            showSnackbar(it, timeLength)
+        }
+    })
 }
 
 /**
@@ -77,7 +93,16 @@ fun setHintTextString(editText: InputEditTextView, text: String?) {
     editText.setErrorText(text)
 }
 
-@BindingAdapter("app:inputEditTextType")
-fun setInputEditTextType(editText: InputEditTextView, aInputType: Int?) {
-    editText.setInputType(aInputType ?: InputType.TYPE_CLASS_TEXT)
+@BindingAdapter("app:inputType")
+fun setInputType(editText: InputEditTextView, aInputType: String?) {
+    editText.setInputType(aInputType?.toIntOrNull() ?: InputType.TYPE_CLASS_TEXT)
+}
+
+@BindingAdapter("app:maxLength")
+fun setMaxLength(editText: InputEditTextView, aLength: Int?) {
+    aLength?.let {
+        val filterArray = arrayOfNulls<InputFilter>(1)
+        filterArray[0] = InputFilter.LengthFilter(it)
+        editText.mEditTextView.filters = filterArray
+    }
 }

@@ -76,7 +76,7 @@ open class BaseToolbarActivity : BaseActivity() {
     /**
      * @param aNavigationIcon this icon will set into the toolbar navigation icon
      */
-    private fun setNavigationIcon(@DrawableRes aNavigationIcon: Int) {
+    fun setNavigationIcon(@DrawableRes aNavigationIcon: Int) {
         mToolbar?.setNavigationIcon(aNavigationIcon)
     }
 

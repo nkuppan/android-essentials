@@ -12,7 +12,7 @@ ext {
     libraryDescription = 'Base essential components for android application to quick start.'
     siteUrl = 'https://github.com/naveenkumarn27/android-essentials'
     gitUrl = 'https://github.com/naveenkumarn27/android-essentials.git'
-    libraryVersion = '1.1.0'
+    libraryVersion = '1.1.1'
     developerId = 'naveenkumarn27'
     developerName = 'Naveen Kumar Kuppan'
     developerEmail = 'naveenkumarn2@gmail.com'
@@ -72,6 +72,7 @@ dependencies {
     api "androidx.constraintlayout:constraintlayout:$libs.constraint"
     api "androidx.core:core-ktx:$libs.core"
     api "androidx.swiperefreshlayout:swiperefreshlayout:$libs.refresh"
+    api "androidx.security:security-crypto:$libs.secure"
 
     //Retrofit
     api "com.squareup.retrofit2:retrofit:$libs.retrofit"
@@ -86,5 +87,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
-apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
-apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
+    apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
+}

@@ -24,7 +24,7 @@ buildscript {
                 material     : '1.2.0-alpha06',
                 appcompat    : '1.1.0',
                 core         : '1.2.0',
-                constraint   : '2.0.0-beta4',
+                constraint   : '2.0.0-beta6',
                 swipe        : '1.0.0',
                 vector       : '1.1.0',
                 coroutines   : '1.1.1',
@@ -36,6 +36,7 @@ buildscript {
                 refresh      : '1.0.0',
                 retrofit     : '2.5.0',
                 retrofit_gson: '2.3.0',
+                secure       : '1.0.0-rc01',
         ]
     }
 

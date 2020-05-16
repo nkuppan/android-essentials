@@ -49,7 +49,7 @@ object CommonTransaction {
             .build()
     }
 
-    private fun hasNetwork(aContext: Context): Boolean? {
+    fun hasNetwork(aContext: Context): Boolean? {
         val connectivityManager =
             aContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
