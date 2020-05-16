@@ -115,4 +115,8 @@ object SecuredPreferenceManager {
 
         editor.apply()
     }
+
+    fun clearValue(aPrefKey: String) {
+        sharedPreferences!!.edit().remove(aPrefKey).apply()
+    }
 }
