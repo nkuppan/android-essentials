@@ -2,6 +2,7 @@ package com.ancient.essentials.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Build
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 
@@ -21,15 +22,21 @@ object SecuredPreferenceManager {
      */
     fun initialize(aContext: Context, aPrefName: String) {
 
-        val masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+        sharedPreferences = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-        sharedPreferences = EncryptedSharedPreferences.create(
-            aPrefName,
-            masterKeyAlias,
-            aContext,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
+            val masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+
+            EncryptedSharedPreferences.create(
+                aPrefName,
+                masterKeyAlias,
+                aContext,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
+
+        } else {
+            aContext.getSharedPreferences(aPrefName, Context.MODE_PRIVATE)
+        }
     }
 
     fun getStringValue(aKey: String): String? {
