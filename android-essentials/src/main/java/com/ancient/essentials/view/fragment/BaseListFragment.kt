@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ancient.essentials.R
@@ -19,9 +20,10 @@ import com.ancient.essentials.view.widget.LoaderWidget
  **/
 abstract class BaseListFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
-    private var dataBinding: ContentListBinding by autoCleared()
+    protected var dataBinding: ContentListBinding by autoCleared()
 
     protected var showGridLayoutForTab: Boolean = false
+    protected var gridSize: Int = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,12 +46,11 @@ abstract class BaseListFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshLi
 
     private fun initializeView() {
 
-        val lGridLayoutManager =
-            if (resources.getBoolean(R.bool.is_tablet) && showGridLayoutForTab) {
-                GridLayoutManager(context, resources.getInteger(R.integer.span_count))
-            } else {
-                GridLayoutManager(context, 1)
-            }
+        val lGridLayoutManager = if (showGridLayoutForTab) {
+            GridLayoutManager(context, gridSize)
+        } else {
+            LinearLayoutManager(context)
+        }
 
         dataBinding.recyclerview.layoutManager = lGridLayoutManager
         dataBinding.recyclerview.itemAnimator = DefaultItemAnimator()
