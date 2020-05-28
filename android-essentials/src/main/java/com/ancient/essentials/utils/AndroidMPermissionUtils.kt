@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 
 /**
  * This class is used to handle android M permissions utilities and
@@ -62,7 +63,7 @@ object AndroidMPermissionUtils {
      * @param callRequest to call [ActivityCompat.requestPermissions] or not
      * @return true if all permissions are allowed to access else false
      */
-    private fun requestPermission(
+    fun requestPermission(
         aActivity: Activity,
         aPermissionList: Array<String>,
         aRequestCode: Int,
@@ -77,8 +78,45 @@ object AndroidMPermissionUtils {
 
                 checkPermissionRationle(aActivity, aPermissionList)
 
-                ActivityCompat.requestPermissions(
-                    aActivity,
+                aActivity.requestPermissions(
+                    lRemainingPermissions,
+                    aRequestCode
+                )
+            }
+
+            return false
+        }
+
+        return true
+    }
+
+    /**
+     * Requesting permission list which is granted or not by user. If the user doesn't allowed
+     * a specific permissions will request permission for that specific permission
+     * [Manifest.permission] to read permission.
+     *
+     * @param aFragment to check permission status and request
+     * @param aPermissionList list to be checked and request
+     * @param aRequestCode permission result code to be handle in [Activity.onRequestPermissionsResult]
+     * @param callRequest to call [ActivityCompat.requestPermissions] or not
+     * @return true if all permissions are allowed to access else false
+     */
+    fun requestPermission(
+        aFragment: Fragment,
+        aPermissionList: Array<String>,
+        aRequestCode: Int,
+        callRequest: Boolean = false
+    ): Boolean {
+
+        val lRemainingPermissions = checkPermissionsStatus(aFragment.requireContext(), aPermissionList)
+
+        if (lRemainingPermissions.isNotEmpty()) {
+
+            if (callRequest) {
+
+                checkPermissionRationle(aFragment.requireActivity(), aPermissionList)
+
+                aFragment.requestPermissions(
                     lRemainingPermissions,
                     aRequestCode
                 )
