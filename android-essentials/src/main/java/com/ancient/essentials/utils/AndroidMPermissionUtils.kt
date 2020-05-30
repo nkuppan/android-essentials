@@ -17,7 +17,7 @@ object AndroidMPermissionUtils {
 
     private var mPermissionRationaleOption: MutableMap<String, Boolean>? = null
 
-    private fun checkPermissionsStatus(
+    fun checkPermissionsStatus(
         aContext: Context,
         aPermissionList: Array<String>
     ): Array<String> {
@@ -78,7 +78,8 @@ object AndroidMPermissionUtils {
 
                 checkPermissionRationle(aActivity, aPermissionList)
 
-                aActivity.requestPermissions(
+                ActivityCompat.requestPermissions(
+                    aActivity,
                     lRemainingPermissions,
                     aRequestCode
                 )

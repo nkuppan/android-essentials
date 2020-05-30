@@ -18,7 +18,7 @@ object Logger {
     }
 
     fun printError(aException: Throwable?) {
-        if ( DEBUG && aException != null) {
+        if (DEBUG && aException != null) {
             Log.e(
                 TAG,
                 if (aException.localizedMessage.isNullOrBlank()) "Unknown exception" else aException.localizedMessage
@@ -27,31 +27,31 @@ object Logger {
     }
 
     fun printInfo(aInformation: String) {
-        if ( DEBUG) {
+        if (DEBUG) {
             Log.i(TAG, aInformation)
         }
     }
 
     fun printInfo(aTag: String, aInformation: String) {
-        if ( DEBUG) {
+        if (DEBUG) {
             Log.i(aTag, aInformation)
         }
     }
 
     fun printWarning(aWarning: String) {
-        if ( DEBUG) {
+        if (DEBUG) {
             Log.w(TAG, aWarning)
         }
     }
 
     fun printVerbose(aVerbose: String) {
-        if ( DEBUG) {
+        if (DEBUG) {
             Log.v(TAG, aVerbose)
         }
     }
 
     fun printDebug(aDebug: String) {
-        if ( DEBUG) {
+        if (DEBUG) {
             Log.d(TAG, aDebug)
         }
     }
