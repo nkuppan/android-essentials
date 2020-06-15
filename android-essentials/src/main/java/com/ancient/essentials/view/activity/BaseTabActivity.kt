@@ -116,12 +116,6 @@ abstract class BaseTabActivity : BaseToolbarActivity() {
         setLoading(isLoading = false)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-
-        viewModel.setAdapter(null)
-    }
-
     /**
      * @return the title of the tabs layout page
      */

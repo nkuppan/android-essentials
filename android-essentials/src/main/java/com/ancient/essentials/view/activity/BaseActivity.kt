@@ -1,7 +1,9 @@
 package com.ancient.essentials.view.activity
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.ancient.essentials.utils.LocaleHelper
 
 /**
  * Created by ancientinc on 21/04/20.
@@ -21,5 +23,9 @@ open class BaseActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(aPlaceHolderId, aFragment)
             .commitNow()
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase?.let { LocaleHelper.onAttach(it) })
     }
 }

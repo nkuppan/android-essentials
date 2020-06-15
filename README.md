@@ -12,7 +12,7 @@ How to add to your project
 ```gradle
 // app.gradle
 dependencies {
-    implementation 'com.ancient.essentials:android-essentials:1.1.6'
+    implementation 'com.ancient.essentials:android-essentials:1.2.0'
 }
 ```
 
