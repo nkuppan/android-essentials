@@ -2,6 +2,7 @@ package com.ancient.essentials.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Build
 
 
 /**
@@ -18,7 +19,11 @@ object SecuredPreferenceManager {
      * @param aPrefName name of the file
      */
     fun initialize(aContext: Context, aPrefName: String) {
-        sharedPreferences = CryptoPreference.initialize(aContext, aPrefName)
+        sharedPreferences = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            CryptoPreference.initialize(aContext, aPrefName)
+        } else {
+            aContext.getSharedPreferences(aPrefName, Context.MODE_PRIVATE)
+        }
     }
 
     fun getStringValue(aKey: String): String? {

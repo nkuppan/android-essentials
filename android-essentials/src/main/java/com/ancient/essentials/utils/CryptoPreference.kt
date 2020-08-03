@@ -11,7 +11,6 @@ import androidx.security.crypto.MasterKeys
  **/
 object CryptoPreference {
 
-
     fun initialize(aContext: Context, aPrefName: String): SharedPreferences {
 
         val masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)

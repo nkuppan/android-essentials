@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.ancient.essentials.example.R
+import com.ancient.essentials.utils.SecuredPreferenceManager
 import com.ancient.essentials.view.activity.BaseActivity
 import com.ancient.example.activity.ExampleListActivity
 import com.ancient.example.activity.ExamplePlaceHolderActivity
@@ -18,6 +19,8 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_page)
+
+        val pref = SecuredPreferenceManager.initialize(this, "sample")
     }
 
     fun toolbarActivityClick(view: View) {
