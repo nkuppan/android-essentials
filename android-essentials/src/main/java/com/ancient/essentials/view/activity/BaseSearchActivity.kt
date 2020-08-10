@@ -6,8 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -19,6 +22,7 @@ import com.ancient.essentials.extentions.obtainBaseViewModel
 import com.ancient.essentials.view.viewmodel.SearchViewModel
 import java.util.*
 
+
 /**
  * This activity will keep the toolbar and search view inside to it. It will also contain google
  * voice search option. You will have a abstract method and it will be whenever the user press done
@@ -28,7 +32,7 @@ import java.util.*
  *
  * Created by ancientinc on 22/04/20.
  **/
-abstract class BaseSearchActivity : BaseToolbarActivity() {
+abstract class BaseSearchActivity : BaseToolbarActivity(), TextView.OnEditorActionListener {
 
     private var viewModel: SearchViewModel by autoCleared()
 
@@ -45,8 +49,12 @@ abstract class BaseSearchActivity : BaseToolbarActivity() {
 
         dataBinding.viewModel = viewModel
 
+        dataBinding.searchView.setOnEditorActionListener(this)
+
         viewModel.searchText.observe(this, Observer {
-            processValue(it)
+            if (enableEachLetterSearchAction()) {
+                processValue(it)
+            }
         })
 
         viewModel.backNavigation.observe(this, Observer {
@@ -61,6 +69,10 @@ abstract class BaseSearchActivity : BaseToolbarActivity() {
     }
 
     private fun processValue(it: String) {
+        if (it.isBlank() && it.length <= 2) {
+            return
+        }
+
         hideKeyboard(dataBinding.searchView)
         searchEntered(it)
     }
@@ -120,9 +132,24 @@ abstract class BaseSearchActivity : BaseToolbarActivity() {
         dataBinding.searchView.setTextColor(ContextCompat.getColor(this, R.color.black))
         dataBinding.searchView.setHintTextColor(ContextCompat.getColor(this, R.color.black))
 
-        dataBinding.backButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_arrow_back_black))
-        dataBinding.clearButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_close))
-        dataBinding.voiceSearchButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_voice_search))
+        dataBinding.backButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.ic_arrow_back_black
+            )
+        )
+        dataBinding.clearButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.ic_close
+            )
+        )
+        dataBinding.voiceSearchButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.ic_voice_search
+            )
+        )
     }
 
     /**
@@ -134,6 +161,14 @@ abstract class BaseSearchActivity : BaseToolbarActivity() {
         attachThisFragment(R.id.place_holder, aFragment)
     }
 
+    override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent?): Boolean {
+        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            processValue(viewModel.searchText.value ?: "")
+            return true
+        }
+        return false
+    }
+
     companion object {
         private const val REQ_CODE_SPEECH_INPUT = 100
     }
@@ -141,4 +176,8 @@ abstract class BaseSearchActivity : BaseToolbarActivity() {
     abstract fun searchEntered(aSearchValue: String)
 
     abstract fun getSearchHintText(): String
+
+    fun enableEachLetterSearchAction(): Boolean {
+        return true
+    }
 }
