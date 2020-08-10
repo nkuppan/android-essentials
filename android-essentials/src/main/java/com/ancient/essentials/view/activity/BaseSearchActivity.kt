@@ -115,6 +115,7 @@ abstract class BaseSearchActivity : BaseToolbarActivity(), TextView.OnEditorActi
                     }
 
                     viewModel.searchText.value = result[0]
+                    processValue(viewModel.searchText.value ?: "")
                 }
             }
         }
@@ -177,7 +178,5 @@ abstract class BaseSearchActivity : BaseToolbarActivity(), TextView.OnEditorActi
 
     abstract fun getSearchHintText(): String
 
-    fun enableEachLetterSearchAction(): Boolean {
-        return true
-    }
+    abstract fun enableEachLetterSearchAction(): Boolean
 }

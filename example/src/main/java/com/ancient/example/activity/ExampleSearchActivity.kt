@@ -15,4 +15,8 @@ class ExampleSearchActivity : BaseSearchActivity() {
     override fun getSearchHintText(): String {
         return "Example Search"
     }
+
+    override fun enableEachLetterSearchAction(): Boolean {
+        return true
+    }
 }
