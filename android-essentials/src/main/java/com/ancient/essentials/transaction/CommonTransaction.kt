@@ -16,9 +16,9 @@ import java.util.concurrent.TimeUnit
  **/
 object CommonTransaction {
 
-    fun getRetrofitObject(aContext: Context, aBaseURL: String): Retrofit {
+    fun getRetrofitObject(aContext: Context, aBaseURL: String, aTimeOut: Long = 60): Retrofit {
 
-        val cacheSize = (5 * 1024 * 1024).toLong()
+        val cacheSize = (10 * 1024 * 1024).toLong()
         val myCache = Cache(aContext.cacheDir, cacheSize)
 
         val client = OkHttpClient.Builder()
@@ -34,8 +34,8 @@ object CommonTransaction {
                     ).build()
                 chain.proceed(request)
             }
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(aTimeOut, TimeUnit.SECONDS)
+            .readTimeout(aTimeOut, TimeUnit.SECONDS)
             .build()
 
         val dateFormat: Gson = GsonBuilder()

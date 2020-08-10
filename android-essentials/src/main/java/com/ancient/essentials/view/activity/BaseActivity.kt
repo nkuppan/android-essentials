@@ -1,8 +1,11 @@
 package com.ancient.essentials.view.activity
 
 import android.content.Context
+import android.content.pm.ActivityInfo
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.ancient.essentials.R
 import com.ancient.essentials.utils.LocaleHelper
 
 /**
@@ -11,6 +14,14 @@ import com.ancient.essentials.utils.LocaleHelper
  * essential 1.0.0 API
  **/
 open class BaseActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (!resources.getBoolean(R.bool.is_tablet)) {
+            this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+    }
 
     /**
      * Attaching fragment in the specified container to show fragment
