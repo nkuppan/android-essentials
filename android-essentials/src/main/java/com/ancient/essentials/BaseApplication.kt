@@ -11,7 +11,11 @@ import com.ancient.essentials.utils.LocaleHelper.onAttach
 open class BaseApplication : Application() {
 
     override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base?.let { onAttach(it) })
+        var newContext = base
+        if (base != null) {
+            newContext = onAttach(base)
+        }
+        super.attachBaseContext(newContext)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

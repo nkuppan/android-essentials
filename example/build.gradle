@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
 
-        applicationId 'com.ancient.sportscorer'
+        applicationId 'com.ancient.example'
 
         minSdkVersion rootProject.ext.sdk.min
         targetSdkVersion rootProject.ext.sdk.max

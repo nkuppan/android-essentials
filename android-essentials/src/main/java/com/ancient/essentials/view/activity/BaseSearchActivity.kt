@@ -73,7 +73,6 @@ abstract class BaseSearchActivity : BaseToolbarActivity(), TextView.OnEditorActi
             return
         }
 
-        hideKeyboard(dataBinding.searchView)
         searchEntered(it)
     }
 
@@ -115,10 +114,15 @@ abstract class BaseSearchActivity : BaseToolbarActivity(), TextView.OnEditorActi
                     }
 
                     viewModel.searchText.value = result[0]
-                    processValue(viewModel.searchText.value ?: "")
+                    searchEnterAction()
                 }
             }
         }
+    }
+
+    private fun searchEnterAction() {
+        hideKeyboard(dataBinding.searchView)
+        processValue(viewModel.searchText.value ?: "")
     }
 
     private fun hideKeyboard(aView: View?) {

@@ -35,7 +35,7 @@ buildscript {
                 gson         : '2.8.5',
                 refresh      : '1.1.0',
                 retrofit     : '2.5.0',
-                retrofit_gson: '2.9.0',
+                retrofit_gson: '2.3.0',
                 secure       : '1.1.0-alpha01',
                 preference   : '1.1.1',
         ]

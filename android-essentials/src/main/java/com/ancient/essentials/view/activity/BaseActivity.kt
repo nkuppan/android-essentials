@@ -36,7 +36,17 @@ open class BaseActivity : AppCompatActivity() {
             .commitNow()
     }
 
+    /**
+     * Setting locale changes to the base context and activity configuration as well
+     */
     override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(newBase?.let { LocaleHelper.onAttach(it) })
+        var newContext = newBase
+        if (newBase != null) {
+            newContext = LocaleHelper.onAttach(newBase)
+        }
+
+        super.attachBaseContext(newContext)
+
+        applyOverrideConfiguration(newContext?.resources?.configuration)
     }
 }
